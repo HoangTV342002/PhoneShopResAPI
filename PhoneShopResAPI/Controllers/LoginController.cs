@@ -17,10 +17,10 @@ namespace PhoneShopResAPI.Controllers
         }
 
         [HttpPost(Name = "Login")]
-        public Account? login(Account account)
+        public Account? login(string User, string Password)
         {
             Account? acc = _phoneStoreContext.Accounts
-                .Where(a => a.Username == account.Username && a.Password == account.Password)
+                .Where(a => a.Email == User && a.Password == Password)
                 .FirstOrDefault();
 
             return acc;
